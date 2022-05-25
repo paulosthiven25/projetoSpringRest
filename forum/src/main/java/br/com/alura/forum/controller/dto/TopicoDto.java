@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.alura.forum.modelo.Topico;
-
+/**
+ * Classe Dto para informacoes referentes a classe Tópico
+ * @author paulo
+ *
+ */
 public class TopicoDto {
 	private Long id;
 	private String titulo;
@@ -34,6 +38,7 @@ public class TopicoDto {
 		return dataCriacao;
 	}
 
+	
 	public static List<TopicoDto> converter(List<Topico> topicos) {
 		// TODO Auto-generated method stub
 		return topicos.stream().map(TopicoDto :: new).collect(Collectors.toList());

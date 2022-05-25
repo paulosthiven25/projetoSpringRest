@@ -12,11 +12,24 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
+/**
+ * classe responsável pelo tratamento de exceções de todas as controllers da aplicação
+ * @author paulo
+ *
+ */
 @RestControllerAdvice
 public class ErroValidacaoHandler {
 	@Autowired
 	private MessageSource ms;
+	
+	/**
+	 * método que retorna um uma lista
+	 * que contém cada mensagem de erro e seus respectivos campos,
+	 * quando a exceção MethodArgumentNotValidException for lançada
+	 * @param exception - a exceção
+	 * @return uma lista de ErrosFormularioDto
+	 */
+	
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public List<ErrosFormularioDto> handle (MethodArgumentNotValidException exception) {

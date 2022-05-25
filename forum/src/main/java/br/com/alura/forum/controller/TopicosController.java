@@ -38,7 +38,13 @@ public class TopicosController {
 	private CursoRepository cr;
 	
 	
-	
+	/**
+	 * método que devolve um grupo de recursos do tipo Tópico do BD,
+	 * baseado no nome do curso
+	 * @param nomeCurso - nome do curso
+	 * @return uma lista de TopicoDto filtrada pelo nome do curso,
+	 * ou se o curso não existir devolve uma lista de TopicoDto com todos os Tópicos do BD
+	 */
 	
 	@GetMapping
 	public List<TopicoDto> lista(String nomeCurso){
@@ -50,6 +56,14 @@ public class TopicosController {
 			List<Topico> topicos = tr.findByCursoNome(nomeCurso); 
 		return TopicoDto.converter(topicos);
 	}
+	
+	/**
+	 * método que cadastra um recurso do tipo Tópico no BD 
+	 * @param form - as informações do recurso a ser cadastrado
+	 * @param uriBuilder - a uri do recurso cadastrado
+	 * @return uma resposta do tipo 201,com a uri do novo recurso e um objeto TopicoDto 
+	 */
+	
 	@PostMapping
 	@Transactional
 	public ResponseEntity<TopicoDto> cadastrar(@Valid @RequestBody TopicoForm form,UriComponentsBuilder uriBuilder) {
@@ -59,6 +73,14 @@ public class TopicosController {
 		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
 		return ResponseEntity.created(uri).body(new TopicoDto(topico));
 	}
+	
+	/**
+	 * método que devolve um recurso do tipo Tópico,baseado na PK do BD 
+	 * @param id - valor da PK do recurso no BD
+	 * @return uma resposta do tipo 200 e um objeto DetalhesTopicoDto,OU
+	 * uma resposta do tipo 400 se não encontrou o recurso no BD
+	 */
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<DetalhesTopicoDto> detalhar(@PathVariable Long id) {
 		Optional<Topico> topico = tr.findById(id);
@@ -70,6 +92,14 @@ public class TopicosController {
 		
 		
 	}
+	
+	/**
+	 * método para atualizar um recurso do tipo tópico,baseado na PK do BD
+	 * @param id - valor da PK do recurso no BD
+	 * @param form - as informações para atualizar o recurso
+	 * @return uma resposta do tipo 200 e um objeto TopicoDto,
+	 * ou uma resposta do tipo 400 se não encontrou o recurso no BD
+	 */
 	
 	@PutMapping("/{id}")
 	@Transactional
@@ -84,6 +114,13 @@ public class TopicosController {
 		
 		return ResponseEntity.notFound().build();
 		}
+	
+	/**
+	 * método para remover um recurso do tipo Tópico do BD
+	 * @param id - valor da PK do recurso no BD
+	 * @return uma resposta do tipo 200 e um objeto TopicoDto,
+	 * ou uma resposta do tipo 400 se não encontrou o recurso no BD
+	 */
 	
 	@DeleteMapping("/{id}")
 	@Transactional

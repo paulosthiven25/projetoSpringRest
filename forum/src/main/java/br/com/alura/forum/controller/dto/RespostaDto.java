@@ -3,7 +3,11 @@
 import java.time.LocalDateTime;
 
 import br.com.alura.forum.modelo.Resposta;
-
+/**
+ * Classe Dto para informacoes referentes a classe Resposta
+ * @author paulo
+ *
+ */
 public class RespostaDto {
 	
 	private Long id;

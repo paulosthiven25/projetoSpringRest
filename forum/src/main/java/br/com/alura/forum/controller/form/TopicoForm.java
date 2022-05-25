@@ -8,7 +8,11 @@ import org.hibernate.validator.constraints.Length;
 import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.CursoRepository;
-
+/**
+ * Classe Dto para informacoes de cadastro referentes a classe Tópico
+ * @author paulo
+ *
+ */
 public class TopicoForm {
 	@NotNull @NotEmpty @Length(min = 5)
 	private String titulo;

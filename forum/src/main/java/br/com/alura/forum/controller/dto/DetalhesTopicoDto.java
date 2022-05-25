@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 
 import br.com.alura.forum.modelo.StatusTopico;
 import br.com.alura.forum.modelo.Topico;
-
+/**
+ * Classe Dto com detalhes adcionais referentes a classe Tópico
+ * @author paulo
+ *
+ */
 public class DetalhesTopicoDto {
 	private Long id;
 	private String titulo;
