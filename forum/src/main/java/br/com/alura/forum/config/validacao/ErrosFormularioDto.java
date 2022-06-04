@@ -1,9 +1,5 @@
 package br.com.alura.forum.config.validacao;
-/**
- * uma classe dto com informações referentes a classe ErroValidaçãoHandler
- * @author paulo
- *
- */
+
 public class ErrosFormularioDto {
 	private String campo;
 	private String erro;
